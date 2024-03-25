@@ -3,8 +3,13 @@ package data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
 
 import static data.TaskManager.addTask;
 import static data.TaskManager.updateTask;
@@ -99,5 +104,82 @@ class TaskManagerTest {
 
         // Assert
         assertEquals(testTodoTask.getName() ,taskManager.getTasksForDate(date).get(0).getName());
+    }
+    @Test
+    void addEvent_validInput_addsTask() throws TaskManagerException {
+        // Arrange
+        LocalDate date = LocalDate.now();
+        String taskDescription = "Test Event";
+        TaskType testTaskType = TaskType.EVENT;
+        String[] testDates = new String[]{"01/01/2023", "02/01/2023"};
+        String[] testTimes = new String[]{"10:00", "12:00"};
+
+        // Act
+        TaskManager.addTask(date, taskDescription, testTaskType, testDates, testTimes);
+        Task addedTask = taskManager.getTasksForDate(date).get(0);
+
+        // Assert
+        assertEquals(taskDescription, addedTask.getName());
+    }
+
+    @Test
+    void addDeadline_validInput_addsTask() throws TaskManagerException {
+        // Arrange
+        LocalDate date = LocalDate.now();
+        String taskDescription = "Test Deadline";
+        TaskType testTaskType = TaskType.DEADLINE;
+        String[] testDates = new String[]{"01/01/2023"};
+        String[] testTimes = new String[]{"10:00"};
+
+        // Act
+        TaskManager.addTask(date, taskDescription, testTaskType, testDates, testTimes);
+        Task addedTask = taskManager.getTasksForDate(date).get(0);
+
+        // Assert
+        assertEquals(taskDescription, addedTask.getName());
+    }
+
+    @Test
+    void updateEvent_noInput_updatesTask() throws TaskManagerException {
+        // Arrange
+        LocalDate date = LocalDate.now();
+        String initialTaskDescription = "Initial event";
+        String updatedTaskDescription = "Updated event";
+        TaskType testTaskType = TaskType.EVENT;
+        String[] initialDates = new String[]{"01/01/2023", "02/01/2023"};
+        String[] initialTimes = new String[]{"10:00", "12:00"};
+
+        String simulatedUserInput = "no\n";
+        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+
+        addTask(date, initialTaskDescription, testTaskType, initialDates, initialTimes);
+
+        // Act
+        updateTask(date, 0, updatedTaskDescription, new Scanner(System.in));
+
+        // Assert
+        assertEquals(updatedTaskDescription, taskManager.getTasksForDate(date).get(0).getName());
+    }
+
+    @Test
+    void updateDeadline_noInput_updatesTask() throws TaskManagerException {
+        // Arrange
+        LocalDate date = LocalDate.now();
+        String initialTaskDescription = "Initial deadline";
+        String updatedTaskDescription = "Updated deadline";
+        TaskType testTaskType = TaskType.DEADLINE;
+        String[] initialDates = new String[]{"01/01/2023"};
+        String[] initialTimes = new String[]{"10:00"};
+
+        String simulatedUserInput = "no\n";
+        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+
+        addTask(date, initialTaskDescription, testTaskType, initialDates, initialTimes);
+
+        // Act
+        updateTask(date, 0, updatedTaskDescription, new Scanner(System.in));
+
+        // Assert
+        assertEquals(updatedTaskDescription, taskManager.getTasksForDate(date).get(0).getName());
     }
 }
