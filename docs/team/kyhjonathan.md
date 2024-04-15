@@ -1,4 +1,4 @@
-# kyhjonathan - Project Portfolio Page
+# Kuek Yeau Hao, Jonathan - Project Portfolio Page
 
 ## Overview
 Given below are my contributions to the project.
@@ -24,6 +24,22 @@ Given below are my contributions to the project.
 
 ### Code contributed:
 [Link to code contribution](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=kyhjonathan&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23&tabOpen=true&tabType=zoom&zA=kyhjonathan&zR=AY2324S2-CS2113-W13-2%2Ftp%5Bmaster%5D&zACS=126.71478873239437&zS=2024-02-23&zFS=w13&zU=2024-04-15&zMG=false&zFTF=commit&zFGS=groupByRepos&zFR=false)
+
+### Contributions to the User Guide:
+* Added documentation for the `save` command.
+* Amended documentation for the TaskManager Class
+* Add screenshots of example usage for several commands under TaskManager Class.
+
+### Contributions to the Developer Guide:
+* Added implementation details for the `Storage` class.
+* Add UML Class and Sequence diagrams for the `Storage` class and addManager.
+* Add in Table of Contents.
+* Ensured headings and font sizes were correct.
+
+### Contributions to team-based tasks:
+* Set up team organisation and repository and ensured that all team members had access to the repository.
+* Incorporated the class for ics development.
+* Maintaining of issue tracking and ensuring that all issues were resolved in a timely manner.
 
 ### Reflections:
 I have learnt much about the practices of Software Engineering that is undoubtedly paramount in the future.
